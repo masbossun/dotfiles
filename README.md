@@ -1,12 +1,13 @@
 ### Setup Dotfiles
 
-1. create new .zshenv file
+1. clone this repo
 ```
-vim ~/.zshenv
+git clone https://github.com/masbossun/dotfiles $HOME/.dotfiles
 ```
-2. put this into `.zshenv`
+
+2. set zsh config directory to .dotfiles
 ```
-ZDOTDIR=~/.dotfiles
+echo 'ZDOTDIR="$HOME/.dotfiles"' >> $HOME/.zshenv
 ```
 
 ### Must Install
