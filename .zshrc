@@ -44,9 +44,10 @@ alias c="clear"
 alias x="exit"
 alias IP="hostname -i"
 alias today=timestamp
+alias dotupdate="cp -r $HOME/.config/nvim/lua/ $HOME/.dotfiles/nvim/ && cp $HOME/.config/nvim/init.lua $HOME/.dotfiles/nvim/"
 
 # Faster edits
-alias vconf="cd $HOME/.config/nvim/ && nvim"
+alias vconf="nvim $HOME/.config/nvim"
 
 # Faster moves
 alias G="cd $SETIA/gitpro"

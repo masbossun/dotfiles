@@ -45,7 +45,7 @@ local hi = {
         ctermbg = 8,
         ctermfg = 8,
         guibg = colors.BrightBlack,
-        guifg = colors.BrightBlack
+        guifg = colors.Black
     }), CreateHi({
         group = "StatusLine",
         ctermbg = 8,

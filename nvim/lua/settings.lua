@@ -21,3 +21,5 @@ o.termguicolors = true
 
 g.nvim_tree_auto_open = 1
 g.nvim_tree_auto_close = 1
+
+cmd("set fillchars=vert:\\▐")
