@@ -1,0 +1,8 @@
+require('settings')
+require('plugins')
+require('lang')
+require('keymap')
+require('config')
+require('commands')
+require('statusline')
+require('styles')
