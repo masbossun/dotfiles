@@ -5,11 +5,40 @@
 ZSH_DISABLE_COMPFIX=true
 ZSH_THEME="spaceship"
 SPACESHIP_CHAR_SYMBOL="ム "
+ZSH_TMUX_AUTOSTART=true
 
-plugins=(git zsh-syntax-highlighting nvm)
+plugins=(
+  git
+  zsh-syntax-highlighting
+  nvm
+  tmux
+)
 skip_global_compinit=1
 
+# Oh my zsh
 source $ZSH/oh-my-zsh.sh
+
+# pyenv
+eval "$(pyenv init --path)"
+export PYENV_SHELL=zsh
+source $HOME/.pyenv/libexec/../completions/pyenv.zsh
+command pyenv rehash 2>/dev/null
+pyenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval "$(pyenv "sh-$command" "$@")"
+    ;;
+  *)
+    command pyenv "$command" "$@"
+    ;;
+  esac
+}
 
 #:::::::::::::#
 #  FUNCTIONS  #
@@ -38,19 +67,27 @@ alias list="dpkg -l | grep ^ii"
 
 # Daily commands
 alias gotop="~/.config/gotop/gotop"
+alias cat="batcat"
 alias v="nvim"
 alias ls="exa -a --classify"
 alias c="clear"
-alias x="exit"
+alias X="exit"
 alias IP="hostname -i"
 alias today=timestamp
+
+# Shortcuts
 alias dotupdate="cp -r $HOME/.config/nvim/lua/ $HOME/.dotfiles/nvim/ && cp $HOME/.config/nvim/init.lua $HOME/.dotfiles/nvim/"
+alias zrefresh="source $DOT/.zshrc"
 
 # Faster edits
 alias vconf="nvim $HOME/.config/nvim"
+alias zconf="nvim $DOT/.zshrc"
+# alias termconf="nvim $WINHOME/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+alias termconf="nvim $APPDATA/alacritty/alacritty.yml"
+alias tconf="nvim $DOT/.tmux.conf"
 
 # Faster moves
-alias G="cd $SETIA/gitpro"
+alias G="cd $WINHOME/gitpro"
 
 # apache/httpd
 alias htdocs="cd /srv/http"
@@ -66,36 +103,6 @@ alias mongrestart="sudo systemctl restart mongodb.service"
 alias mongconfig="sudo nvim /etc/mongodb.conf"
 alias mongrecover="sudo -u mongodb mongod --repair --dbpath /var/lib/mongodb/"
 
-# Ricing
-alias icheat="cat ~/.config/i3/config"
-alias iconf="nvim ~/.config/i3/config"
-
-alias pcheat="cat ~/.config/polybar/config"
-alias pconf="nvim ~/.config/polybar/config"
-
-alias zconf="nvim ~/.dotfiles/.zshrc"
-alias zcheat="cat ~/.dotfiles/.zshrc"
-alias zrefresh="source ~/.dotfiles/.zshrc"
-
-alias xconf="nvim ~/.Xresources"
-alias xcheat="cat ~/.Xresources"
-alias xupdate="xrdb ~/.Xresources"
-
-alias kconf="nvim ~/.config/kitty/kitty.conf"
-alias kcheat="cat ~/.config/kitty/kitty.conf"
-
-alias nconf="nvim ~/.config/neofetch/config.conf"
-alias tconf="nvim ~/.config/terminator/config"
-alias rconf="code ~/.config/rofi/mytheme.rasi"
-alias neo="neofetch --w3m $HOME/Pictures/alex-perez-550765-unsplash-neo.jpg"
-alias SS="scrot -c -d 2"
-
-# OPENBOX CHEAT
-alias obrcconf="v ~/.config/openbox/rc.xml"
-alias obmenuconf="v ~/.config/openbox/menu.xml"
-alias obautostartconf="v ~/.config/openbox/autostart"
-alias obenvconf="v ~/.config/openbox/environment"
-
 # PYTHON ALIASES
 alias p="python"
 alias ps="pipenv shell"
@@ -103,3 +110,9 @@ alias pm="python manage.py"
 
 # Git
 alias gs="git status"
+
+# OPENBOX CHEAT
+alias obrcconf="v ~/.config/openbox/rc.xml"
+alias obmenuconf="v ~/.config/openbox/menu.xml"
+alias obenvconf="v ~/.config/openbox/environment"
+alias obautostartconf="v ~/.config/openbox/autostart"

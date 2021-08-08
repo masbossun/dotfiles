@@ -1,3 +1,8 @@
+if [[ $(pwd) == /mnt/c/Windows/System32  ]] || [[ $(pwd) == '/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs/Alacritty' ]]
+then
+    cd ~
+fi
+
 #::::::::::::#
 #    PATH    #
 #::::::::::::#
@@ -9,8 +14,12 @@ export ZSH=$HOME/.dotfiles/.oh-my-zsh
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Path Dotfiles
+export DOT=$HOME/.dotfiles
+
 # Path Windows User Dir
-export SETIA=/mnt/c/Users/setia
+export WINHOME=/mnt/c/Users/setia
+export APPDATA=$WINHOME/AppData/Roaming
 
 # Path NODE
 export PATH=$PATH:$HOME/dev/node/bin
@@ -86,3 +95,8 @@ export NVM_DIR="$HOME/.config/nvm"
 
 # Luarocks
 export PATH=$PATH:$HOME/.luarocks/bin
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/shims:${PATH}"
+export PATH="$PYENV_ROOT/bin:$PATH"
