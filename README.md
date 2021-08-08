@@ -1,3 +1,9 @@
+<h1 align="center">masbossun dotfiles</h1>
+
+<p align="center">
+<img width="600" alt="screen shot" src="https://raw.githubusercontent.com/masbossun/dotfiles/main/dotfiles.png">
+</p>
+
 ### Setup Dotfiles
 
 1. clone this repo
@@ -12,6 +18,7 @@ echo 'ZDOTDIR="$HOME/.dotfiles"' >> $HOME/.zshenv
 
 3. install apps
    - neovim >= 0.5
+   - tmux
    - exa
    - nvm
    - go
@@ -21,6 +28,10 @@ echo 'ZDOTDIR="$HOME/.dotfiles"' >> $HOME/.zshenv
    - oh-my-zsh see [install oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki)
    - zsh-syntax-higlighting see [install zsh-syntax-higlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
+4. configure symlinks
+```sh
+ln -s $HOME/.dotfiles/.tmux.conf $$HOME/.tmux.conf
+```
 
 ### Setup Neovim
 
@@ -62,4 +73,11 @@ luarocks install --server=https://luarocks.org/dev luaformatter --local
 3. instrall efm-language-server
 ```sh
 go get github.com/mattn/efm-langserver
+```
+
+### Setup typescript development
+
+1. install language server
+```sh
+npm install -g typescript typescript-language-server
 ```
