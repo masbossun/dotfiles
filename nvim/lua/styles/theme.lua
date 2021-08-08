@@ -5,6 +5,12 @@ local cmd = vim.cmd
 
 local hi = {
     CreateHi({
+        group = "Normal",
+        ctermbg = 7,
+        ctermfg = 0,
+        guibg = "NONE",
+        guifg = colors.Foreground
+    }), CreateHi({
         group = "LineNr",
         ctermbg = "NONE",
         ctermfg = 8,

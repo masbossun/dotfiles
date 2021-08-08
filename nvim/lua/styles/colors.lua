@@ -1,7 +1,7 @@
 local colors = {
-    Background = "#1d1f21", -- base00
+    Background = "#1c1c1c", -- base00
     Foreground = "#c5c8c6", -- base05
-    Black = "#1d1f21", -- base00
+    Black = "#1c1c1c", -- base00
     Red = "#cc6666", -- base08
     Green = "#b5bd68", -- base0B
     Yellow = "#f0c674", -- base0A
@@ -16,7 +16,7 @@ local colors = {
     BrightBlue = "#81a2be", -- base0D
     BrightPurple = "#b294bb", -- base0E
     BrightCyan = "#8abeb7", -- base0C
-    BrightWhite = "#ffffff" -- base07
+    BrightWhite = "#eaeaea" -- base07
 }
 
 return colors
