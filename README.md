@@ -20,8 +20,10 @@ echo 'ZDOTDIR="$HOME/.dotfiles"' >> $HOME/.zshenv
    - neovim >= 0.5
    - tmux
    - exa
-   - nvm
    - go
+   - nvm (nodejs)
+   - rbenv (ruby)
+   - pyenv (python)
    - ninja
    - lua & luarocks
    - zsh see [install zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
@@ -31,6 +33,7 @@ echo 'ZDOTDIR="$HOME/.dotfiles"' >> $HOME/.zshenv
 4. configure symlinks
 ```sh
 ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
+ln -s $HOME/.dotfiles/.teamocil $HOME/.teamocil
 ```
 
 ### Setup Neovim

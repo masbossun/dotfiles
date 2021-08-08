@@ -20,6 +20,14 @@ local mode_map = {
     ['t'] = 'terminal '
 }
 
+local function git()
+    local branchName = vim.fn.system(
+                           "git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+
+    if branchName == nil then return "" end
+    return "" .. branchName
+end
+
 local function mode()
     local m = vim.api.nvim_get_mode().mode
     if mode_map[m] == nil then return m end
@@ -27,8 +35,9 @@ local function mode()
 end
 
 local stl = {
-    '%#PrimaryBlock#', mode(), '%#SecondaryBlock#', '%#Blanks#', '%f', '%m',
-    '%=', '%#SecondaryBlock#', '%l,%c ', '%#PrimaryBlock#', '%{&filetype}'
+    '%#PrimaryBlock#', mode(), '%#SecondaryBlock#', '%#GitBlock#', git(),
+    '%#Blanks#', '%f', '%m', '%=', '%#SecondaryBlock#', '%l,%c ',
+    '%#PrimaryBlock#', '%{&filetype}'
 }
 
 vim.o.statusline = table.concat(stl)

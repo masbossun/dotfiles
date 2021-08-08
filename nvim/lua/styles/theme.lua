@@ -41,6 +41,12 @@ local hi = {
         guibg = colors.BrightBlack,
         guifg = colors.BrightRed
     }), CreateHi({
+        group = "GitBlock",
+        ctermbg = 8,
+        ctermfg = 1,
+        guibg = colors.BrightBlack,
+        guifg = colors.BrightYellow
+    }), CreateHi({
         group = "Blanks",
         ctermbg = 8,
         ctermfg = 0,
