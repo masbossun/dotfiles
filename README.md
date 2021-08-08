@@ -30,7 +30,7 @@ echo 'ZDOTDIR="$HOME/.dotfiles"' >> $HOME/.zshenv
 
 4. configure symlinks
 ```sh
-ln -s $HOME/.dotfiles/.tmux.conf $$HOME/.tmux.conf
+ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
 ```
 
 ### Setup Neovim
