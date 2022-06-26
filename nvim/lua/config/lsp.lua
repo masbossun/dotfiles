@@ -57,6 +57,10 @@ local custom_attach = function(client, bufnr)
     local msg = string.format("Language server %s started!", client.name)
     vim.notify(msg, 'info', {title = 'Nvim-config'})
   end
+  
+  if client.name == "tsserver" then
+    client.server_capabilities.document_formatting = false
+  end
 end
 
 local capabilities = lsp.protocol.make_client_capabilities()

@@ -19,10 +19,29 @@ return require('packer').startup(function()
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
 
+    -- formatting
+    use 'jose-elias-alvarez/null-ls.nvim'
+
     -- completion stuff
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
     use 'onsails/lspkind.nvim'
+
+    -- snippets stuff
+    use 'L3MON4D3/LuaSnip'
+    
+    -- syntax hl
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate"
+    }
+    use "p00f/nvim-ts-rainbow"
+
+    -- asynchronous
+    use "nvim-lua/plenary.nvim"
 
     -- git stuff
     use 'tpope/vim-fugitive'
@@ -31,6 +50,7 @@ return require('packer').startup(function()
 
     -- helper
     use 'terrortylor/nvim-comment'
+    use 'jiangmiao/auto-pairs'
 
     -- navigation
     use 'kyazdani42/nvim-tree.lua'
