@@ -32,6 +32,12 @@ return require('packer').startup(function()
 
     -- snippets stuff
     use 'L3MON4D3/LuaSnip'
+
+    -- grep
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
     
     -- syntax hl
     use {
@@ -60,10 +66,6 @@ return require('packer').startup(function()
     use 'norcalli/nvim-colorizer.lua'
     use 'chriskempson/base16-vim'
     use 'kyazdani42/nvim-web-devicons'
-
-    require('nvim_comment').setup()
-    require('colorizer').setup({"*"}, {names = false})
-    require('gitsigns').setup()
 
 end)
 

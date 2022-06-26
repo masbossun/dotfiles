@@ -1,3 +1,6 @@
+require('config.colorizer')
+require('config.gitsigns')
+require('config.nvim-comment')
 require('config.lsp-installer')
 require('config.lsp')
 require('config.nvim-cmp')
