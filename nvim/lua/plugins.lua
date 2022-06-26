@@ -1,4 +1,4 @@
-local execute = vim.api.nvim_command
+-- local execute = vim.api.nvim_command
 local fn = vim.fn
 
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -17,12 +17,17 @@ return require('packer').startup(function()
 
     -- lsp stuff
     use 'neovim/nvim-lspconfig'
-    use 'ray-x/lsp_signature.nvim'
-    use 'hrsh7th/nvim-compe'
-    use 'glepnir/lspsaga.nvim'
+    use 'williamboman/nvim-lsp-installer'
 
-    -- lsp: lua
-    use 'folke/lua-dev.nvim'
+    -- completion stuff
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'onsails/lspkind.nvim'
+
+    -- git stuff
+    use 'tpope/vim-fugitive'
+    use 'airblade/vim-gitgutter'
+    use 'lewis6991/gitsigns.nvim'
 
     -- helper
     use 'terrortylor/nvim-comment'
@@ -34,10 +39,11 @@ return require('packer').startup(function()
     use 'mhinz/vim-startify'
     use 'norcalli/nvim-colorizer.lua'
     use 'chriskempson/base16-vim'
+    use 'kyazdani42/nvim-web-devicons'
 
     require('nvim_comment').setup()
-    require('lspsaga').init_lsp_saga()
     require('colorizer').setup({"*"}, {names = false})
+    require('gitsigns').setup()
 
 end)
 

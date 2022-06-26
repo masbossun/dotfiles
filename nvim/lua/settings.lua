@@ -18,8 +18,6 @@ o.incsearch = true
 o.scrolloff = 8
 o.signcolumn = "yes"
 o.termguicolors = true
-
-g.nvim_tree_auto_open = 1
-g.nvim_tree_auto_close = 1
+o.splitright = true
 
 cmd("set fillchars=vert:\\▐")

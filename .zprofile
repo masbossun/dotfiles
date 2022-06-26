@@ -25,12 +25,21 @@ export APPDATA=$WINHOME/AppData/Roaming
 export PATH=$PATH:$HOME/dev/node/bin
 
 # Path JAVA
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JAVA_HOME=/home/masbossun/jdk/jdk-17.0.1
 export PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
 
 # Path androidsdk
-export ANDROID_SDK=$HOME/Android/Sdk
-export ANDROID_HOME=$HOME/Android/Sdk
+# export ANDROID_SDK=$HOME/Android/Sdk
+# export ANDROID_HOME=$HOME/Android/Sdk
+# export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
+# export PATH=$PATH:$ANDROID_SDK/tools
+# export PATH=$PATH:$ANDROID_SDK/tools/bin
+# export PATH=$PATH:$ANDROID_SDK/platform-tools
+# export PATH=$PATH:$ANDROID_SDK/emulator
+# export PATH=$PATH:$ANDROID_HOME/bundle-tool
+export ANDROID_SDK=$WINHOME/AppData/Local/Android/Sdk
+export ANDROID_HOME=$WINHOME/AppData/Local/Android/Sdk
 export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 export PATH=$PATH:$ANDROID_SDK/tools
 export PATH=$PATH:$ANDROID_SDK/tools/bin
@@ -90,8 +99,10 @@ export DENO_INSTALL="$HOME/.local"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 # NVM
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 
 # Luarocks
 export PATH=$PATH:$HOME/.luarocks/bin

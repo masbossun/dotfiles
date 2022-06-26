@@ -10,7 +10,6 @@ ZSH_TMUX_AUTOSTART=true
 plugins=(
   git
   zsh-syntax-highlighting
-  nvm
   tmux
 )
 skip_global_compinit=1
@@ -44,6 +43,29 @@ pyenv() {
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+# nvm
+[[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
 #:::::::::::::#
 #  FUNCTIONS  #
@@ -85,14 +107,14 @@ alias dotupdate="cp -r $HOME/.config/nvim/lua/ $HOME/.dotfiles/nvim/ && cp $HOME
 alias zrefresh="source $DOT/.zshrc"
 
 # Faster edits
-alias vconf="nvim $HOME/.config/nvim"
+alias vconf="nvim $HOME/.config/nvim/"
 alias zconf="nvim $DOT/.zshrc"
-# alias termconf="nvim $WINHOME/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 alias termconf="nvim $APPDATA/alacritty/alacritty.yml"
 alias tconf="nvim $DOT/.tmux.conf"
+alias dotconf="nvim $DOT"
 
 # Faster moves
-alias G="cd $WINHOME/gitpro"
+alias G="cd $HOME/gitpro"
 
 # apache/httpd
 alias htdocs="cd /srv/http"
