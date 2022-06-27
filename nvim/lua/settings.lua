@@ -1,5 +1,6 @@
 local o = vim.opt
 local g = vim.g
+local wo = vim.wo
 local cmd = vim.cmd
 
 o.clipboard:append("unnamedplus")
@@ -20,4 +21,4 @@ o.signcolumn = "yes"
 o.termguicolors = true
 o.splitright = true
 
-cmd("set fillchars=vert:\\▐")
+cmd("set fillchars=vert:\\▐,eob:\\ ")

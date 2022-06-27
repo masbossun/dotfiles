@@ -64,7 +64,12 @@ return require("packer").startup(function()
 	use("kyazdani42/nvim-tree.lua")
 
 	-- cosmetics
-	use("mhinz/vim-startify")
+	use({
+		"goolord/alpha-nvim",
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	})
 	use("norcalli/nvim-colorizer.lua")
 	use("chriskempson/base16-vim")
 	use("kyazdani42/nvim-web-devicons")

@@ -103,13 +103,6 @@ local hi = {
 		guifg = colors.Black,
 	}),
 	CreateHi({
-		group = "Mode",
-		ctermbg = 8,
-		ctermfg = 1,
-		guibg = colors.BrightRed,
-		guifg = colors.Black,
-	}),
-	CreateHi({
 		group = "Git",
 		ctermbg = 8,
 		ctermfg = 1,
@@ -122,6 +115,20 @@ local hi = {
 		ctermfg = 1,
 		guibg = "NONNE",
 		guifg = colors.BrightBlack,
+	}),
+	CreateHi({
+		group = "Filetype",
+		ctermbg = 8,
+		ctermfg = 1,
+		guibg = colors.Yellow,
+		guifg = colors.Black,
+	}),
+	CreateHi({
+		group = "LineCol",
+		ctermbg = 8,
+		ctermfg = 1,
+		guibg = colors.BrightRed,
+		guifg = colors.Black,
 	}),
 }
 

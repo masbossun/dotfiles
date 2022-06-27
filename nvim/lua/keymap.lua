@@ -2,6 +2,8 @@ local map = vim.api.nvim_set_keymap
 local cmd = vim.cmd
 local opts = { noremap = true, silent = true }
 
+local telescope_present, _ = pcall(require, "telescope.builtin")
+
 map("n", "<Space>", "<NOP>", opts)
 vim.g.mapleader = " "
 
@@ -32,3 +34,8 @@ map("x", "J", ":move '>+1<CR>gv-gv", opts)
 -- terminal move
 map("n", "<Leader>n", ":wa<CR>:vertical botright term<CR>", opts)
 map("t", "<Esc>", [[ <C-\><C-n> ]], opts)
+
+-- telescope move
+if telescope_present then
+	map("n", "<C-p>", ":Telescope find_files<CR>", opts)
+end
