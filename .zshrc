@@ -17,54 +17,60 @@ skip_global_compinit=1
 source $ZSH/oh-my-zsh.sh
 
 # pyenv
-eval "$(pyenv init --path)"
-export PYENV_SHELL=zsh
-source $HOME/.pyenv/libexec/../completions/pyenv.zsh
-command pyenv rehash 2>/dev/null
-pyenv() {
-  local command
-  command="${1:-}"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
+if type pyenv > /dev/null; then
+  eval "$(pyenv init --path)"
+  export PYENV_SHELL=zsh
+  source $HOME/.pyenv/libexec/../completions/pyenv.zsh
+  command pyenv rehash 2>/dev/null
+  pyenv() {
+    local command
+    command="${1:-}"
+    if [ "$#" -gt 0 ]; then
+      shift
+    fi
 
-  case "$command" in
-  rehash|shell)
-    eval "$(pyenv "sh-$command" "$@")"
-    ;;
-  *)
-    command pyenv "$command" "$@"
-    ;;
-  esac
-}
+    case "$command" in
+    rehash|shell)
+      eval "$(pyenv "sh-$command" "$@")"
+      ;;
+    *)
+      command pyenv "$command" "$@"
+      ;;
+    esac
+  }
+fi
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+if type rbenv > /dev/null; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+  export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+fi
 
 # nvm
-[[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+if type nvm > /dev/null; then
+  [[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion
+  autoload -U add-zsh-hook
+  load-nvmrc() {
+    local node_version="$(nvm version)"
+    local nvmrc_path="$(nvm_find_nvmrc)"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+    if [ -n "$nvmrc_path" ]; then
+      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
+      if [ "$nvmrc_node_version" = "N/A" ]; then
+        nvm install
+      elif [ "$nvmrc_node_version" != "$node_version" ]; then
+        nvm use
+      fi
+    elif [ "$node_version" != "$(nvm version default)" ]; then
+      echo "Reverting to nvm default version"
+      nvm use default
     fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+  }
+  add-zsh-hook chpwd load-nvmrc
+  load-nvmrc
+fi
 
 #:::::::::::::#
 #  FUNCTIONS  #
