@@ -10,7 +10,6 @@ ZSH_TMUX_AUTOSTART=true
 plugins=(
   git
   zsh-syntax-highlighting
-  tmux
 )
 skip_global_compinit=1
 
