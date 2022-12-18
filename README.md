@@ -1,7 +1,7 @@
 <h1 align="center">masbossun dotfiles</h1>
 
 <p align="center">
-<img width="100%" alt="screen shot" src="https://raw.githubusercontent.com/masbossun/dotfiles/main/dotfiles.png">
+<img width="100%" alt="screen shot" src="https://raw.githubusercontent.com/masbossun/dotfiles/main/screenshot/dotfiles-2.png">
 </p>
 
 ### Setup Dotfiles
