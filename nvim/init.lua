@@ -1,7 +1,0 @@
-require("settings")
-require("plugins")
-require("config")
-require("keymap")
-require("commands")
-require("statusline")
-require("styles")
