@@ -47,6 +47,11 @@ if type rbenv > /dev/null; then
   export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 fi
 
+# thefuck
+if type fuck > /dev/null; then
+  eval "$(thefuck --alias)"
+fi
+
 # nvm
 if type nvm > /dev/null; then
   [[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion
