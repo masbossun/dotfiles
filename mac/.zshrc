@@ -19,8 +19,6 @@ plugins=(
   zsh-syntax-highlighting
   tmux
   ugit
-  # zsh-vi-mode
-  vi-mode
 )
 skip_global_compinit=1
 
@@ -50,20 +48,6 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# vim things
-# start typing + [Up-Arrow] - fuzzy find history forward
-if [[ "${terminfo[kcuu1]}" != "" ]]; then
-  autoload -U up-line-or-beginning-search
-  zle -N up-line-or-beginning-search
-  bindkey -M viins "${terminfo[kcuu1]}" up-line-or-beginning-search
-fi
-# start typing + [Down-Arrow] - fuzzy find history backward
-if [[ "${terminfo[kcud1]}" != "" ]]; then
-  autoload -U down-line-or-beginning-search
-  zle -N down-line-or-beginning-search
-  bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
-fi
-
 # # pyenv
 # eval "$(pyenv init -)"
 # export PYENV_SHELL=zsh
@@ -90,9 +74,6 @@ fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-
-# rust
-. "$HOME/.cargo/env"
 
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 
@@ -195,5 +176,3 @@ if [ -f '/Users/ryansetiagi/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rya
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/ryansetiagi/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ryansetiagi/google-cloud-sdk/completion.zsh.inc'; fi
-
-alias luamake=/Users/ryansetiagi/.config/nvim/lua-language-server/3rd/luamake/luamake

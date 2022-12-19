@@ -1,0 +1,8 @@
+windows:
+  - name: ide-rkt-tenant-app
+    root: ~/repo/rkt-tenant-app
+    layout: f351,238x56,0,0{164x56,0,0,6,73x56,165,0[73x28,165,0,8,73x27,165,29,9]}
+    panes:
+      - nvim
+      - npm run rn:clean && npm run start:reset
+      - git fetch
