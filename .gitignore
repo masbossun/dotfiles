@@ -1,3 +1,4 @@
 .zcompdump*
 .oh-my-zsh/
 nvim/plugin
+.zsh_history
