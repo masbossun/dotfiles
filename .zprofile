@@ -111,3 +111,6 @@ export PATH=$PATH:$HOME/.luarocks/bin
 export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/shims:${PATH}"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
+# Swift
+export PATH="$HOME/devtools/swift/usr/bin:$PATH"
