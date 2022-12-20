@@ -112,6 +112,11 @@ alias X="exit"
 alias IP="hostname -i"
 alias today=timestamp
 
+# Tools
+alias untar="tar -xvf"
+alias untargz="tar -xvzf"
+alias untarbz2="tar -xvjf"
+
 # Shortcuts
 alias dotupdate="cp -r $HOME/.config/nvim/lua/ $HOME/.dotfiles/nvim/ && cp $HOME/.config/nvim/init.lua $HOME/.dotfiles/nvim/"
 alias zrefresh="source $DOT/.zshrc"
